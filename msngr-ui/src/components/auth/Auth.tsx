@@ -1,7 +1,7 @@
-import { Button, Stack, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useGetMe } from "../../hooks/useGetMe";
-import { useNavigate } from "react-router";
+import { Button, Stack, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useGetMe } from '../../hooks/useGetMe';
+import { useNavigate, useLocation } from 'react-router';
 
 interface AuthProps {
   submitLabel: string;
@@ -18,25 +18,27 @@ const Auth = ({
   error,
   extraFields,
 }: AuthProps) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { data } = useGetMe();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { data: user } = useGetMe();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
 
   useEffect(() => {
-    if (data) {
-      navigate("/");
+    if (user) {
+      navigate('/');
     }
-  }, [data, navigate]);
+  }, [user, navigate]);
 
   return (
     <Stack
       spacing={3}
       sx={{
-        height: "100vh",
+        height: '100vh',
         maxWidth: 360,
-        margin: "0 auto",
-        justifyContent: "center",
+        margin: '0 auto',
+        justifyContent: 'center',
       }}
     >
       <TextField

@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.2758bda0.css","mappings":"AAAA,SAGE,oBAAqB,CACrB,YAAa,CACb,2BAA4B,CAH5B,mBAAoB,CADpB,eAKF","sources":["components/chat-list/chat-list-item/ChatListItem.css"],"sourcesContent":[".content {\n  overflow: hidden;\n  display: -webkit-box;\n  -webkit-line-clamp: 1;\n  line-clamp: 1;\n  -webkit-box-orient: vertical;\n}\n"],"names":[],"sourceRoot":""}
