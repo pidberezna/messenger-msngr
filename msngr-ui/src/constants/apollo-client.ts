@@ -35,7 +35,7 @@ const httpLink = new HttpLink({ uri: `${API_URL}/graphql` });
 console.log('WebSocket URL:', WS_URL);
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: `${WS_URL}/graphql`,
+    url: `wss://messenger-msngr.onrender.com/graphql`,
     connectionParams: {
       token: getToken(),
     },
