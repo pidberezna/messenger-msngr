@@ -26,19 +26,27 @@ import { AuthService } from './auth/auth.service';
       driver: ApolloDriver,
       useFactory: (authService: AuthService) => ({
         autoSchemaFile: true,
-        cors: true,
+        cors: {
+          origin: '*',
+          credentials: true,
+        },
         subscriptions: {
           'graphql-ws': {
             onConnect: (context: any) => {
               try {
+                console.log(
+                  'WebSocket connection attempt',
+                  context.connectionParams,
+                );
                 const request: Request = context.extra.request;
                 const user = authService.verifyWs(
                   request,
                   context.connectionParams,
                 );
                 context.user = user;
+                console.log('WebSocket connected:', user);
               } catch (err) {
-                new Logger().error(err);
+                console.error('WebSocket connection error:', err);
                 throw new UnauthorizedException();
               }
             },
