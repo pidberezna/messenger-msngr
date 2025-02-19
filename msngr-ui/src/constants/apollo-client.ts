@@ -32,6 +32,7 @@ const authLink = setContext((_, { headers }) => {
 
 const httpLink = new HttpLink({ uri: `${API_URL}/graphql` });
 
+console.log('WebSocket URL:', WS_URL);
 const wsLink = new GraphQLWsLink(
   createClient({
     url: `${WS_URL}/graphql`,
